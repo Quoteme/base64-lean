@@ -1,0 +1,4 @@
+[{"file": "c/base64.c",
+  "directory": "/home/luca/Dokumente/dev/krimskrams/base64-lean",
+  "command":
+  "cc -c -o .lake/build/lib/base64.o c/base64.c -I/home/luca/.elan/toolchains/leanprover--lean4---v4.25.2/include -fPIC"}]

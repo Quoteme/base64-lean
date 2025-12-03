@@ -1,6 +1,0 @@
-name = "base64-lean"
-version = "0.1.0"
-defaultTargets = ["Base64Lean"]
-
-[[lean_lib]]
-name = "Base64Lean"

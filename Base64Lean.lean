@@ -1,8 +1,8 @@
 -- Minimal Base64 implementation in Lean4
---
-def alphabet : String := "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
 
-def encodeChar (n : Nat) : Char :=
+private def alphabet : String := "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
+
+private def encodeChar (n : Nat) : Char :=
   alphabet.get! ⟨n % 64⟩
 
 def encode (bytes : ByteArray) : String :=
@@ -76,3 +76,15 @@ def decode (s : String) : Option ByteArray :=
       | _, _ => none
     | _ => none
   go chars ByteArray.empty
+
+namespace OpenSSL
+  
+/-- Encode a string to base64 format -/
+@[extern "lean_base64_encode"]
+opaque encode : String → String
+
+/-- Decode a base64 string. Returns None if decoding fails. -/
+@[extern "lean_base64_decode"]
+opaque decode_native : String → Option String
+
+end OpenSSL
